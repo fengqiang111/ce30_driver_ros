@@ -47,26 +47,6 @@ int main(int argc, char** argv)
     }
 }
 #else
-void DataReceiveCB(shared_ptr<PointCloud> cloud)
-{
-    sensor_msgs::PointCloud pointcloud;
-    pointcloud.header.stamp = ros::Time::now();
-    pointcloud.header.frame_id = gFrameID;
-    static int point_num = 320 * 20;
-    pointcloud.points.reserve(point_num);
-    for (auto& point : cloud->points)
-    {
-        static geometry_msgs::Point32 ros_point;
-        ros_point.x = point.x;
-        ros_point.y = point.y;
-        ros_point.z = point.z;
-        pointcloud.points.push_back(ros_point);
-    }
-    if (gPub.getNumSubscribers() > 0)
-    {
-        gPub.publish(pointcloud);
-    }
-}
 
 int main(int argc, char** argv)
 {
@@ -151,6 +131,10 @@ int main(int argc, char** argv)
                 for (int y = 0; y < distance_scan.Height(); ++y)
                 {
                     auto channel = distance_scan.at(x, y);
+                    if (channel.type() != Channel::Type::normal)
+                    {
+                        continue;
+                    }
                     Point p = channel.point();
                     if (sqrt(p.x * p.x + p.y * p.y) < 0.1f)
                     {
