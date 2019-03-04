@@ -26,10 +26,10 @@ The `ce30_driver_ros` provides ROS interfaces to the `ce30_driver`. For more inf
 
 #### Dependencies
 
-- [ce30_driver](https://codincodee.github.io/ce30_driver) 1.0.6
+- [ce30_driver](https://github.com/fengqiang111/ce30_driver/tree/develop) 1.0.6
 - [ROS](http://www.ros.org/) Kinetic
 
 #### Quick Access
 
 - [Official Website](http://www.benewake.com/en/index.html)
-- [ce30_driver](https://codincodee.github.io/ce30_driver)
+- [ce30_driver](https://github.com/fengqiang111/ce30_driver/tree/develop)
