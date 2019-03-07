@@ -12,6 +12,11 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
 )
 
+find_package(PCL 1.7 REQUIRED)
+include_directories(${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
 find_package(ce30_driver 1.0.6 REQUIRED)
 
 ## System dependencies are found with CMake's conventions
